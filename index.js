@@ -9,7 +9,8 @@ function check(){
     return false;
   }
 
-  if(cash < bill)
+  //Check if cash given is less than the bill amount?
+  if(cash-0 < bill-0)
   {
     document.getElementById('ans').innerHTML = 'Kindly pay the bill &#128591';
   }
@@ -18,28 +19,12 @@ function check(){
   {
     let notes = [2000, 500, 100, 20, 10, 5, 1];
     let change = cash - bill;
-    let c = '';
-
-    if(change >= 2000)
+  
+    for(let i=0;i<notes.length;i++)
     {
-      c = 2000;
-    }
-    else 
-    {
-      while(change != 0)
-      {
-        let i,j = 1;
-        for(i=0;i<notes.length;i++)
-        {
-          if(notes[i] <= change)
-          {
-            let temp = document.getElementById(notes[i]).innerText;
-            document.getElementById(notes[i]).innerHTML = temp-0+1;
-            change -= notes[i];
-          }
-        }
-      }
+      let no_of_notes = Math.trunc(change / notes[i]);
+      change %= notes[i];
+      document.getElementById(notes[i]).innerHTML = no_of_notes;
     }
   }
-  
 }
