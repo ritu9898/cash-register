@@ -9,10 +9,14 @@ function check(){
     return false;
   }
 
+  cash = parseInt(cash);
+  bill = parseInt(bill);
+
   //Check if cash given is less than the bill amount?
-  if(cash-0 < bill-0)
+  if(cash < bill)
   {
     document.getElementById('ans').innerHTML = 'Kindly pay the bill &#128591';
+    return false;
   }
 
   else
@@ -25,6 +29,7 @@ function check(){
       let no_of_notes = Math.trunc(change / notes[i]);
       change %= notes[i];
       document.getElementById(notes[i]).innerHTML = no_of_notes;
+      document.getElementById('ans').innerHTML = '';
     }
   }
 }
